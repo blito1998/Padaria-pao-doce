@@ -27,6 +27,12 @@
                         <li class="nav-item">
                             <a href="/" class="nav-link">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">Compras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/pagecontato" class="nav-link">Contato</a>
+                        </li>
                         @guest
                         <li class="nav-item">
                             <a href="/login" class="nav-link">Entre</a>
@@ -35,12 +41,6 @@
                             <a href="/register" class="nav-link">Cadastre-se</a>
                         </li>
                         @endguest
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">Compras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/pagecontato" class="nav-link">Contato</a>
-                        </li>
                         @auth
                         <li class="nav-item">
                             <a href="/cadastro" class="nav-link">Cadastros</a>
@@ -61,7 +61,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbar2">
                     <a href="/" class="navbar-brand">
-                        <img src="/img/pao.svg" alt="Padaria pão doce">
+                        <img src="/img/paoBrand.svg" alt="Padaria pão doce">
                     </a>
                     <ul>
                         <div id="search2-container" class="col-md-12">

@@ -8,17 +8,14 @@ Route::get('/',[PadariaController::class, 'index'] );
 
 Route::get('/pagecontato',[PadariaController::class, 'pagecontato'] );
 
-Route::get('/cadastro',[PadariaController::class, 'cadastro'] );
+Route::get('/cadastro',[PadariaController::class, 'cadastro'] )->middleware('auth');
 
 Route::get('/cadastro/cadastroprodutos',[PadariaController::class, 'cadastroprodutos'] );
 
 Route::get('/cadastro/{id}',[PadariaController::class, 'show'] );
 
-route::post('/cadastro',[PadariaController::class, 'store']);
+Route::post('/cadastro',[PadariaController::class, 'store']);
 
+Route::delete('/cadastro/{id}',[PadariaController::class,'destroy']);
 
-
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/dashboard',[PadariaController::class, 'dashboard'])->middleware('auth');

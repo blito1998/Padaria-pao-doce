@@ -18,7 +18,8 @@ body {
 #navbar2{
     justify-content: space-between;
     border-bottom: 1 px solid #fff;
-    margin: 0px 25px;
+    padding: 0px 25px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 #navbar2 img{
@@ -54,7 +55,7 @@ body {
     background-size: cover;
     background-position: center;
     height:150px;
-    padding: 50px;
+    padding: 0px 0px 0px 0px;
 } 
 ion-icon {
     font-size: 38px;
@@ -97,6 +98,20 @@ ion-icon {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 30px;
+}
+
+/* Dashboard */
+.dashboard-title-container {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.dashboard-product-container th {
+    width: auto;
+}
+
+.dashboard-product-container form{
+    display: inline-block;
 }
 
 

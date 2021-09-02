@@ -64,6 +64,9 @@ class PadariaController extends Controller
             $product->image = $imageName;
         }
 
+        $user = auth()->user();
+        $product->user_id = $user->id;
+
         $product->save();
 
         return redirect('cadastro/cadastroprodutos')->with('msg','Produto cadastrado com sucesso!');
@@ -74,6 +77,24 @@ class PadariaController extends Controller
         $product= Product::FindOrFail($id);
 
         return view('cadastro.show',['product'=>$product]);
+
+    }
+
+    public function dashboard(){
+
+        $user = auth()->user();
+
+        $products = $user->products;
+
+        return view('cadastro.dashboard',['products'=>$products]);
+
+    }
+
+    public function destroy($id){
+
+        Product::findOrfail($id)->delete();
+
+        return redirect('/dashboard')->with('msg','Produto excluido com sucesso!');
 
     }
 
