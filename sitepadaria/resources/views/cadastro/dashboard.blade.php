@@ -31,7 +31,8 @@
                     <td>{{$product->valor}}</td>
                     <td>{{$product->codigo}}</td>
                     <td>
-                        <a href="#" class="btn btn-info edit btn">Editar</a> 
+                        <a href="/cadastro/edit/{{$product->id}}" class="btn btn-info edit btn">Editar</a> 
+
                         <form action="/cadastro/{{$product->id}}" method="POST">
                         @csrf
                         @method('DELETE')
