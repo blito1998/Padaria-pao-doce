@@ -13,29 +13,27 @@ class PadariaController extends Controller
         $search = request('search');
 
         if($search){
-
             $products = Product::where([
                 ['product', 'like', '%'.$search.'%']
             ])->get();
 
         }   else{
-
             $products = Product::all();
-
         }
-
-       
 
         return view('welcome', ['products'=>$products,'search'=>$search]);
     }
+
 
     public function pagecontato() {
         return view('pagecontato');
     }
 
+
     public function cadastro() {
         return view('cadastro');
     }
+
 
     public function cadastroprodutos() {
         return view('cadastro.cadastroprodutos');
@@ -72,12 +70,12 @@ class PadariaController extends Controller
         return redirect('cadastro/cadastroprodutos')->with('msg','Produto cadastrado com sucesso!');
     }
 
+
     public function show($id) {
 
         $product= Product::FindOrFail($id);
 
         return view('cadastro.show',['product'=>$product]);
-
     }
 
     public function dashboard(){
@@ -86,7 +84,9 @@ class PadariaController extends Controller
 
         $products = $user->products;
 
-        return view('cadastro.dashboard',['products'=>$products]);
+        $productsAsParticipants= $user->productsAsParticipants;
+
+        return view('cadastro.dashboard',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
 
     }
 
@@ -129,7 +129,7 @@ class PadariaController extends Controller
 
     }
 
-    public function carrinho($id){
+    public function carrinho($id) {
 
         $user = auth()->user();
 
@@ -137,9 +137,22 @@ class PadariaController extends Controller
 
         $product = Product::findOrfail($id);
 
-        return redirect('/home')->with('msg','Produdo adicinado no carrinho!');
+        return redirect('/dashboard')->with('msg', 'Seu produto foi adicionado com sucesso!');
 
     }
+
+    public function carrinhocompras() {
+
+            $user = auth()->user();
+    
+            $products = $user->products;
+    
+            $productsAsParticipants= $user->productsAsParticipants;
+    
+            return view('cadastro.carrinhocompras',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
+
+    }
+
 
 }
 

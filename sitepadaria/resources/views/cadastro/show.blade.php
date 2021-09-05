@@ -13,7 +13,16 @@
       <h1>{{$product->product}}</h1>
       <p class="product-valor">Valor: {{$product->valor}}</p>
       <p class="product-qtd">Quantidade: {{$product->qtd}}</p>
-      <a href="#" class="btn btn-secondary" id="product-compra">comprar</a>
+      <form action="/cadastro/carrinho/{{$product->id}}" method="POST">
+        @csrf
+        <a href="/cadastro/carrinho/{{$product->id}}" 
+        class="btn btn-secondary" 
+        id="product-compra"
+        onclick="product.preventDefault();
+        this.closest('form').submit();">
+        Comprar
+      </a>
+      </form>
     </div>
     <div class="col-md-12" id="description-container">
       <h3>Sobre o produto:</h3>

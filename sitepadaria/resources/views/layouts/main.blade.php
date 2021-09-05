@@ -28,7 +28,7 @@
                             <a href="/" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Compras</a>
+                            <a href="/cadastro/carrinhocompras" class="nav-link">Carrinho</a>
                         </li>
                         <li class="nav-item">
                             <a href="/pagecontato" class="nav-link">Contato</a>
@@ -73,7 +73,7 @@
                     <ul class="navbar-nav">
                     <a href="/"> <ion-icon name="home-sharp"></ion-icon></a>
                     <a href="/login"><ion-icon name="person-circle-outline"></ion-icon></a>
-                    <ion-icon name="log-out-outline"></ion-icon>
+                    <a href="/cadastro/carrinhocompras"><ion-icon name="cart-outline"></ion-icon></a>
                     </ul>
                 </div>
             </nav>

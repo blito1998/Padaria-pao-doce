@@ -7,6 +7,7 @@ use App\Http\Controllers\PadariaController;
 Route::get('/',[PadariaController::class, 'index'] );
 Route::get('/pagecontato',[PadariaController::class, 'pagecontato'] );
 
+Route::get('/cadastro/carrinhocompras',[PadariaController::class, 'carrinhocompras']);
 Route::get('/cadastro',[PadariaController::class, 'cadastro'] )->middleware('auth');
 Route::get('/cadastro/cadastroprodutos',[PadariaController::class, 'cadastroprodutos'] );
 Route::get('/cadastro/{id}',[PadariaController::class, 'show'] );
@@ -17,5 +18,6 @@ Route::put('/cadastro/update/{id}',[PadariaController::class,'update'])->middlew
 
 Route::get('/dashboard',[PadariaController::class, 'dashboard'])->middleware('auth');
 
-Route::post('/cadastro/carrinho/{id}',[PadariaController::class, 'carrinho'])->middleware('auth');
+Route::get('/cadastro/carrinho/{id}',[PadariaController::class, 'carrinho'])->middleware('auth');
+
 
