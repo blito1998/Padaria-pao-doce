@@ -18,6 +18,9 @@ Route::put('/cadastro/update/{id}',[PadariaController::class,'update'])->middlew
 
 Route::get('/dashboard',[PadariaController::class, 'dashboard'])->middleware('auth');
 
+Route::delete('/cadastro/leave/{id}',[PadariaController::class, 'leavecarrinho'])->middleware('auth');
 Route::get('/cadastro/carrinho/{id}',[PadariaController::class, 'carrinho'])->middleware('auth');
+
+
 
 

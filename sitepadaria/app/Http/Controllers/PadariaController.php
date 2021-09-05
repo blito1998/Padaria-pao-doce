@@ -70,13 +70,33 @@ class PadariaController extends Controller
         return redirect('cadastro/cadastroprodutos')->with('msg','Produto cadastrado com sucesso!');
     }
 
+    /*VISUALIZAR PRODUTO*/
+
 
     public function show($id) {
 
         $product= Product::FindOrFail($id);
 
-        return view('cadastro.show',['product'=>$product]);
+        $user= auth()->user();
+        $hasUserJoined = false;
+
+        if($user){
+
+            $userProducts = $user->productsAsParticipants->toArray();
+
+            foreach($userProducts as $userProduct){
+                if($userProduct['id']==$id){
+                    $hasUserJoined=true;
+
+                }
+            }
+        }
+
+
+        return view('cadastro.show',['product'=>$product, 'hasUserJoined'=>$hasUserJoined]);
     }
+
+    /* INFO DASHBOARD*/
 
     public function dashboard(){
 
@@ -90,6 +110,8 @@ class PadariaController extends Controller
 
     }
 
+    /*DELETE */
+
     public function destroy($id){
 
         Product::findOrfail($id)->delete();
@@ -97,6 +119,8 @@ class PadariaController extends Controller
         return redirect('/dashboard')->with('msg','Produto excluido com sucesso!');
 
     }
+
+    /*EDIT*/
 
     public function edit($id){
 
@@ -129,6 +153,8 @@ class PadariaController extends Controller
 
     }
 
+    /*ADICIONAR NO CARRINHO*/
+
     public function carrinho($id) {
 
         $user = auth()->user();
@@ -141,6 +167,25 @@ class PadariaController extends Controller
 
     }
 
+
+    /*DELETAR DO CARRINHO*/
+
+    public function leavecarrinho($id){
+
+        $user = auth()->user();
+
+        $user->productsAsParticipants()->detach($id);
+
+        $product = Product::findOrfail($id);
+
+        return redirect('cadastro/carrinhocompras')->with('msg', 'Seu produto excluido!');
+
+
+    }
+
+
+    /*CARRINHO DE COMPRAS*/
+
     public function carrinhocompras() {
 
             $user = auth()->user();
@@ -152,6 +197,8 @@ class PadariaController extends Controller
             return view('cadastro.carrinhocompras',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
 
     }
+
+    
 
 
 }

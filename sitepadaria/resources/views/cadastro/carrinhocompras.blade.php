@@ -31,14 +31,20 @@
                     <td>{{$product->valor}}</td>
                     <td>{{$product->codigo}}</td>
                     <td>
-                      <a href="#">Remover</a>
+                      <form action="/cadastro/leave/{{$product->id}}" method="POST">
+                      @csrf
+                      @method("DELETE")
+                      <button type="submit" class="btn btn-danger delete-btn">
+                          Retirar
+                      </button>
+                      </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 @else
-<p>Não existe nem um produto no carrinho</p>
+<p>Não existe produtos no carrinho!</p>
 @endif
 </div>
 
