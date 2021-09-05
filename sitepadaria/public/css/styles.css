@@ -35,6 +35,7 @@ body {
 }
 
 .btn-secondary{
+    background-color: #555448;
     border: 1px solid #000000;
 }
 
@@ -47,6 +48,17 @@ body {
     text-align: center;
     padding: 10px; 
 }
+
+.already-joined-msg{
+    margin: 15px 0;
+    color: #004085;
+    background-color: #CCE5FF;
+    border: 1px solid #B8DAFF;
+    text-align: center;
+    padding: 10px;
+    width: 275px;
+}
+
 
 /*banner do pao*/
 
@@ -184,12 +196,23 @@ footer p{
 
 /*Pagina de cadastro*/
 
-#cadastro-submit{
-    font-size: 40px;
+#cadastro2-submit{
+    font-size: 18px;
     text-align: center;
-    border-radius:20px;
-    padding: 20px 20px;
-    margin:10px;
+    border-radius:5px;
+    padding: 18px 18px;
+    margin-top: 50px;
+    background-color: #555448;
+}
+
+#cadastro-submit{
+    font-size: 35px;
+    text-align: center;
+    border-radius:5px;
+    padding: 30px 30px;
+    margin-top: 25px;
+    background-color: #555448;
+    width: 40%;
 }
 
 .form-group{
