@@ -24,3 +24,7 @@ Route::get('/cadastro/carrinho/{id}',[PadariaController::class, 'carrinho'])->mi
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
