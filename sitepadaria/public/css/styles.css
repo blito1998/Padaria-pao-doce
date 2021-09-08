@@ -1,6 +1,7 @@
 *{
     font-family: Roboto;
 }
+    
 
 body {
     min-height: 100vh;
@@ -76,6 +77,7 @@ ion-icon {
 
 #search2-container form{
     width: 130%;
+    margin-top: 7px;
 }
 
 /*lista de produtos */
@@ -214,6 +216,26 @@ footer p{
     background-color: #555448;
     width: 40%;
 }
+
+/*Page-contato*/
+
+#img-contato-page {
+    width: 160px;
+    margin-top: 16%;
+    margin-bottom: 15px;
+}
+
+#contato-page {
+    margin-top: auto;
+}
+
+#contato-page h2, h1 {
+    font-family: 'Playfair Display', serif;
+    margin-top: 18px;
+}
+
+
+
 
 .form-group{
     margin-top: 15px;

@@ -188,15 +188,16 @@ class PadariaController extends Controller
 
     public function carrinhocompras() {
 
-            $user = auth()->user();
-    
-            $products = $user->products;
-    
-            $productsAsParticipants= $user->productsAsParticipants;
-    
-            return view('cadastro.carrinhocompras',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
+        $user = auth()->user();
 
-    }
+        $products = $user->products;
+
+        $productsAsParticipants= $user->productsAsParticipants;
+
+        return view('cadastro.carrinhocompras',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
+
+}
+
 
     
 

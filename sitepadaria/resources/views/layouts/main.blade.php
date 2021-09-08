@@ -8,6 +8,7 @@
         
         <!-- Fonte de google -->
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 
 
         <!-- CSS Bootstrap -->
@@ -21,14 +22,11 @@
     </head>
     <body>
         <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a href="/" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/cadastro/carrinhocompras" class="nav-link">Carrinho</a>
                         </li>
                         <li class="nav-item">
                             <a href="/pagecontato" class="nav-link">Contato</a>
@@ -42,6 +40,9 @@
                         </li>
                         @endguest
                         @auth
+                        <li class="nav-item">
+                            <a href="/cadastro/carrinhocompras" class="nav-link">Carrinho</a>
+                        </li>
                         <li class="nav-item">
                             <a href="/cadastro" class="nav-link">Cadastros</a>
                         </li>
@@ -58,7 +59,7 @@
                     </ul>
                 </div>
             </nav>
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <nav class="navbar navbar-expand-sm navbar-light">
                 <div class="collapse navbar-collapse" id="navbar2">
                     <a href="/" class="navbar-brand">
                         <img src="/img/paoBrand.svg" alt="Padaria pão doce">
@@ -92,7 +93,7 @@
 
         {{--  --}}
         <footer>
-            <p>Padaria Pão Doce&copy; 2021 </p>
+            <p>Padaria Sonho Bom&copy; 2021 </p>
         </footer>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
