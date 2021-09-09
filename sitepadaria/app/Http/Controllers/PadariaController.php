@@ -31,12 +31,32 @@ class PadariaController extends Controller
 
 
     public function cadastro() {
-        return view('cadastro');
+        $user = auth()->user();
+        
+
+        if($user->Verificador == 1 || 2){
+            return view('cadastro');
+        }
+        else
+        {
+            return view('naopode');
+        }
+        
     }
 
 
     public function cadastroprodutos() {
+        
+        $user = auth()->user();
+        if($user->Verificador == 3){
+            return view('naopode');
+        }
+        
         return view('cadastro.cadastroprodutos');
+
+        $user = auth()->user();
+        
+
     }
     
     public function store(Request $request){
