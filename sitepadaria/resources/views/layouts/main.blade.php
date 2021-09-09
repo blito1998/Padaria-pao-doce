@@ -44,9 +44,6 @@
                             <a href="/cadastro/carrinhocompras" class="nav-link">Carrinho</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/cadastro" class="nav-link">Cadastros</a>
-                        </li>
-                        <li class="nav-item">
                             <form action="/logout" method='POST'>
                             @csrf
                             <a href="/logout" 

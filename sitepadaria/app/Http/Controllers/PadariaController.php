@@ -10,6 +10,11 @@ class PadariaController extends Controller
     
     public function index() {
         
+        
+
+        $user = auth()->user();
+         
+
         $search = request('search');
 
         if($search){
@@ -21,7 +26,7 @@ class PadariaController extends Controller
             $products = Product::all();
         }
 
-        return view('welcome', ['products'=>$products,'search'=>$search]);
+        return view('welcome', ['products'=>$products,'search'=>$search,'user'=>$user]);
     }
 
 
@@ -31,17 +36,13 @@ class PadariaController extends Controller
 
 
     public function cadastro() {
+             
         $user = auth()->user();
-        
-
-        if($user->Verificador == 1 || 2){
-            return view('cadastro');
-        }
-        else
-        {
+        if($user->Verificador == 3){
             return view('naopode');
-        }
-        
+        }   
+
+            return view('cadastro'); 
     }
 
 

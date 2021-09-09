@@ -26,6 +26,22 @@
         <p>Não há produtos disponíveis</p>
         @endif
     </div>
+
+   
+    @auth
+
+    @if($user->Verificador == 1)
+        <a href="/cadastro" class="btn btn-secondary">Teste</a>  
+    @endif
+  
+
+  
+
+    @endauth
+    
+       
+
+
 </div>
 
 @endsection
