@@ -30,9 +30,14 @@
    
     @auth
 
-    @if($user->Verificador == 1)
-        <a href="/cadastro" class="btn btn-secondary">Teste</a>  
+    @if($user->Verificador == 1 )
+        <a href="/cadastro" class="btn btn-secondary">Cadastrar</a>  
     @endif
+
+    @if($user->Verificador == 2 )
+        <a href="/cadastro" class="btn btn-secondary">Cadastrar</a>  
+    @endif
+  
   
 
   
