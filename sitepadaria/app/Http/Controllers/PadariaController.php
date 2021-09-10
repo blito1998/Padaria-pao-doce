@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 
 class PadariaController extends Controller
 {
@@ -42,7 +43,7 @@ class PadariaController extends Controller
             return view('naopode');
         }   
 
-            return view('cadastro'); 
+            return view('cadastro',['user'=>$user]); 
     }
 
 
@@ -142,6 +143,45 @@ class PadariaController extends Controller
     }
 
     /*EDIT*/
+
+    /*CLIENTES*/
+
+    public function editcliente($id){
+
+        $user = User::FindOrFail($id);
+
+        return view('cliente.editcliente',['user'=>$user]);
+    }
+
+    public function updatecliente(Request $request){
+
+        $data=$request->all();
+
+
+        User::findOrfail($request->id)->update($data);
+
+        return redirect('cliente/dashboardcliente')->with('msg','Cliente editado com sucesso!');
+
+    }
+
+    public function dashboardcliente(){
+
+      $users = User::all();
+        
+      return view('cliente.dashboardcliente',['users'=>$users]);
+
+    }
+
+    public function destroycliente($id){
+
+        User::findOrfail($id)->delete();
+
+        return redirect('cliente/dashboardcliente')->with('msg','Cliente excluido com sucesso!');
+
+    }
+
+
+    /*PRODUTOS*/
 
     public function edit($id){
 
