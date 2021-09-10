@@ -146,6 +146,18 @@ class PadariaController extends Controller
 
     /*CLIENTES*/
 
+
+    public function cadastroclientes() {
+        
+        $user = auth()->user();
+        
+        return view('clientes.cadastroclientes');
+
+      
+        
+
+    }
+
     public function editcliente($id){
 
         $user = User::FindOrFail($id);
@@ -165,11 +177,44 @@ class PadariaController extends Controller
     }
 
     public function dashboardcliente(){
+    
+        $user = auth()->user();
+        $users = User::all();
 
-      $users = User::all();
+        if($user->Verificador == 1 ){
+            return view('cliente.dashboardcliente',['users'=>$users]);
+        }
+
+        if($user->Verificador == 2 ){
+            $search = request('search');
+
+            if($search){
+                $products = Product::where([
+                    ['product', 'like', '%'.$search.'%']
+                ])->get();
+    
+            }   else{
+                $products = Product::all();
+            }
+    
+            return view('welcome', ['products'=>$products,'search'=>$search,'user'=>$user]);
+        }
+
+        if($user->Verificador == 3 ){
+            $search = request('search');
+
+        if($search){
+            $products = Product::where([
+                ['product', 'like', '%'.$search.'%']
+            ])->get();
+
+        }   else{
+            $products = Product::all();
+        }
+
+        return view('welcome', ['products'=>$products,'search'=>$search,'user'=>$user]);
+        }
         
-      return view('cliente.dashboardcliente',['users'=>$users]);
-
     }
 
     public function destroycliente($id){
