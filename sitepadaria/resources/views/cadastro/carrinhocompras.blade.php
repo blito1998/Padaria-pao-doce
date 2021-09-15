@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="col-md-10 offset-md-1 dashboard-title-container">
-    <h1>Produtos que está no carrinho</h1>
+    <h1>Produtos que estão no carrinho</h1>
 </div>
 <div class="col-md-10 offset-md-1 dashboard-product-container">
 @if(count($productsAsParticipants)>0)
@@ -44,7 +44,7 @@
         </tbody>
     </table>
 @else
-<p>Não existe produtos no carrinho!</p>
+<p>Não existem produtos no carrinho!</p>
 @endif
 </div>
 
