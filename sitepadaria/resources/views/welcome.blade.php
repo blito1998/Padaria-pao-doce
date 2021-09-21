@@ -38,10 +38,6 @@
         <a href="/cadastro" class="btn btn-secondary">Cadastrar</a>  
     @endif
   
-  
-
-  
-
     @endauth
     
        

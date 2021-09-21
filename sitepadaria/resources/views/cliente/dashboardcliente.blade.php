@@ -4,7 +4,6 @@
 
 @section('content')
 
-
 <div class="col-md-12 dashboard-product-container">
     <div class="row">
     <div class="col-md-2 text-center">
@@ -50,5 +49,10 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 
 @endsection

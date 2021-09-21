@@ -27,6 +27,11 @@ Route::put('/cliente/updatecliente/{id}',[PadariaController::class,'updateclient
 Route::get('/cliente/dashboardcliente',[PadariaController::class, 'dashboardcliente'])->middleware('auth');
 Route::delete('/cliente/{id}',[PadariaController::class,'destroycliente'])->middleware('auth');
 
+//API PAGAMENTO
+
+Route::get('/testepagar',[PadariaController::class,'testepagar'])->middleware('auth');
+Route::get('/testepagamento',[PadariaController::class,'testepagamento'])->middleware('auth');
+
 
 
 

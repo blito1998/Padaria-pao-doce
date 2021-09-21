@@ -304,8 +304,34 @@ class PadariaController extends Controller
 
 }
 
+//API PAGAMENTO
 
+
+
+    public function testepagar(){
+
+        $user = auth()->user();
+
+        $products = $user->products;
+
+        $productsAsParticipants= $user->productsAsParticipants;
+
+        return view('client.index',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
+    }
     
+    public function testepagamento(){
+
+        $user = auth()->user();
+
+        $products = $user->products;
+
+        $productsAsParticipants= $user->productsAsParticipants;
+
+        return view('mercadopago',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
+    }
+    
+
+
 
 
 }

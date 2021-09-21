@@ -46,7 +46,45 @@
 @else
 <p>Não existem produtos no carrinho!</p>
 @endif
+
+
+
+<button href="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js" >TESTE</button>
+
+@foreach($products as $product)
+
+  $item = new MercadoPago\Item();
+  $item->id = $product->id;
+  $item->title = $product->product;
+  $item->description = $product->description;
+  $item->quantity = $product->qtd;
+  $item->currency_id = "BRL";
+  $item->unit_price = $product->valor;
+ 
+@endforeach
+
 </div>
+
+
+
+<script>
+// Adicione as credenciais do SDK
+  const mp = new MercadoPago('TEST-3107f7c6-271a-4fea-b8bd-f227dc7bfd9b', {
+        locale: 'es-AR'
+  });
+
+  // Inicialize o checkout
+  mp.checkout({
+      preference: {
+          id: '1870176291907586'
+      },
+      render: {
+            container: '.cho-container', // Indique o nome da class onde será exibido o botão de pagamento
+            label: 'Pagar', // Muda o texto do botão de pagamento (opcional)
+      }
+});
+</script>
+
 
 
 @endsection

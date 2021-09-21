@@ -18,6 +18,7 @@
         <!-- CSS da aplicaçao -->
         <link rel="stylesheet" href="/css/styles.css">
         <script src="/js/scripts.js"> </script>
+        <script src="https://sdk.mercadopago.com/js/v2"></script>
 
     </head>
     <body>
