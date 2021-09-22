@@ -300,6 +300,12 @@ class PadariaController extends Controller
 
         $productsAsParticipants= $user->productsAsParticipants;
 
+    //$link = 1;
+
+    
+    //'link'=>$link
+
+
         return view('cadastro.carrinhocompras',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
 
 }

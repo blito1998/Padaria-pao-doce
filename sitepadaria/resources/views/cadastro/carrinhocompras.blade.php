@@ -4,6 +4,59 @@
 
 @section('content')
 
+
+<?php
+//Logica de venda
+use function PHPSTORM_META\type;
+
+$acess_token = "TEST-1870176291907586-092120-5de678394e7322f727d489629bb8e315-476013376";
+
+require_once 'C:\Users\Edson\Desktop\Versão Final Código\Padaria-pao-doce\sitepadaria\vendor\autoload.php';
+
+    MercadoPago\SDK::setAccessToken($acess_token);
+
+        $valorfinal = 0;
+
+        foreach($productsAsParticipants as $product){
+        $preference = new MercadoPago\Preference();
+
+        $item = new MercadoPago\Item();
+        $item->id = $product->id;
+        $item->title = $product->product;
+        $item->description = $product->description;
+        $item->quantity = $product->qtd;
+        $item->currency_id = "BRL";
+        $item->unit_price = $product->valor;
+
+        //Guardar valores da compra
+        $valorfinal = $valorfinal + ($item->quantity*$item->unit_price);
+        //Temos que colocar os valores do usuário na tabela de vendas por aqui
+        
+
+        //Valores finais na compra
+        $item->quantity = 1;
+        $item->unit_price = $valorfinal;
+        $item->title = "Produtos do carrinho";
+
+        $preference->items = array($item);
+
+        $preference->back_urls = array(
+            "success" => 'http://127.0.0.1:8000/',
+            "failure" => 'http://127.0.0.1:8000/cadastro/carrinhocompras', 
+            "pending" => 'http://127.0.0.1:8000/'
+        );
+        $preference->auto_return = "approved"; 
+
+        $preference->notification_url = 'http://localhost:8080/notification.php';
+        $preference->external_reference = 4545;
+        $preference->save();
+
+        $link = $preference->init_point;
+        
+        }
+        //echo $link;
+?>
+
 <div class="col-md-10 offset-md-1 dashboard-title-container">
     <h1>Produtos que estão no carrinho</h1>
 </div>
@@ -42,49 +95,20 @@
                 </tr>
             @endforeach
         </tbody>
+
     </table>
+
+
+   
+    <a href={{$link}} class="btn btn-secondary" >Pagar</a>
+
 @else
 <p>Não existem produtos no carrinho!</p>
 @endif
 
 
 
-<button href="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js" >TESTE</button>
-
-@foreach($products as $product)
-
-  $item = new MercadoPago\Item();
-  $item->id = $product->id;
-  $item->title = $product->product;
-  $item->description = $product->description;
-  $item->quantity = $product->qtd;
-  $item->currency_id = "BRL";
-  $item->unit_price = $product->valor;
- 
-@endforeach
-
 </div>
-
-
-
-<script>
-// Adicione as credenciais do SDK
-  const mp = new MercadoPago('TEST-3107f7c6-271a-4fea-b8bd-f227dc7bfd9b', {
-        locale: 'es-AR'
-  });
-
-  // Inicialize o checkout
-  mp.checkout({
-      preference: {
-          id: '1870176291907586'
-      },
-      render: {
-            container: '.cho-container', // Indique o nome da class onde será exibido o botão de pagamento
-            label: 'Pagar', // Muda o texto do botão de pagamento (opcional)
-      }
-});
-</script>
-
 
 
 @endsection
