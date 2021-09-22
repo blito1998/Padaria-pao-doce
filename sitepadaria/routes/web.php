@@ -31,6 +31,13 @@ Route::delete('/cliente/{id}',[PadariaController::class,'destroycliente'])->midd
 
 Route::get('/testepagar',[PadariaController::class,'testepagar'])->middleware('auth');
 Route::get('/testepagamento',[PadariaController::class,'testepagamento'])->middleware('auth');
+Route::get('/compraconcluida',[PadariaController::class,'compraconcluida'])->middleware('auth');
+
+//RELATORIO VENDAS
+Route::get('/relatoriovendas',[PadariaController::class,'relatoriovendas'])->middleware('auth');
+
+//COMPROVANTE
+Route::get('/comprovante',[PadariaController::class,'comprovante'])->middleware('auth');
 
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Venda;
 
 class PadariaController extends Controller
 {
@@ -95,12 +96,15 @@ class PadariaController extends Controller
     /*VISUALIZAR PRODUTO*/
 
 
-    public function show($id) {
+    public function show($id){
 
         $product= Product::FindOrFail($id);
 
         $user= auth()->user();
         $hasUserJoined = false;
+
+        
+
 
         if($user){
 
@@ -261,7 +265,7 @@ class PadariaController extends Controller
 
     /*ADICIONAR NO CARRINHO*/
 
-    public function carrinho($id) {
+    public function carrinho($id, Request $request) {
 
         $user = auth()->user();
 
@@ -269,7 +273,11 @@ class PadariaController extends Controller
 
         $product = Product::findOrfail($id);
 
-        return redirect('/dashboard')->with('msg', 'Seu produto foi adicionado com sucesso!');
+        $product->qtd=$request->qtd;
+        $product->save();
+
+
+        return redirect('/cadastro/carrinhocompras')->with('msg', 'Seu produto foi adicionado com sucesso!');
 
     }
 
@@ -306,7 +314,7 @@ class PadariaController extends Controller
     //'link'=>$link
 
 
-        return view('cadastro.carrinhocompras',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
+        return view('cadastro.carrinhocompras',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants, 'user'=>$user]);
 
 }
 
@@ -336,8 +344,54 @@ class PadariaController extends Controller
         return view('mercadopago',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
     }
     
+    public function compraconcluida() {
+
+        $user = auth()->user();
+
+        $products = $user->products;
+
+        $productsAsParticipants= $user->productsAsParticipants;
+
+    //$link = 1;
+
+    
+    //'link'=>$link
 
 
+        return view('compraconcluida',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants, 'user'=>$user]);
+
+}
+
+
+
+//RELATORIO VENDAS
+
+public function relatoriovendas(){
+
+    $user = auth()->user();
+    $users = User::all();
+    $vendas = Venda::all();
+
+    if($user->Verificador == 1 ){
+        return view('relatoriovendas',['users'=>$users, 'vendas'=>$vendas]);
+    }
+}
+
+// COMPROVANTE
+
+public function comprovante() {
+        
+    $user = auth()->user();
+
+    $products = $user->products;
+
+    $productsAsParticipants= $user->productsAsParticipants;
+
+    return view('comprovante',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
+
+  
+ 
+}
 
 
 }

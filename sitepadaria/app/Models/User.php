@@ -31,8 +31,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'verificador'
+        'verificador',
+        'total'
     ];
+
+    //Teste
+    protected $total = [
+        'total' => 'integer'
+    ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.

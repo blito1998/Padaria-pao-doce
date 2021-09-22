@@ -4,8 +4,14 @@
 
 @section('content')
 
+@csrf
+@method('PUT')
 
 <?php
+
+use Illuminate\Support\Facades\DB;
+use Laravel\Sanctum\Http\Controllers\CsrfCookieController;
+
 //Logica de venda
 use function PHPSTORM_META\type;
 
@@ -31,7 +37,13 @@ require_once 'C:\Users\Edson\Desktop\Versão Final Código\Padaria-pao-doce\site
         //Guardar valores da compra
         $valorfinal = $valorfinal + ($item->quantity*$item->unit_price);
         //Temos que colocar os valores do usuário na tabela de vendas por aqui
+      
         
+        $user->total = $valorfinal;
+        
+
+        
+       
 
         //Valores finais na compra
         $item->quantity = 1;
@@ -41,7 +53,7 @@ require_once 'C:\Users\Edson\Desktop\Versão Final Código\Padaria-pao-doce\site
         $preference->items = array($item);
 
         $preference->back_urls = array(
-            "success" => 'http://127.0.0.1:8000/',
+            "success" => 'http://127.0.0.1:8000/compraconcluida',
             "failure" => 'http://127.0.0.1:8000/cadastro/carrinhocompras', 
             "pending" => 'http://127.0.0.1:8000/'
         );
@@ -54,6 +66,11 @@ require_once 'C:\Users\Edson\Desktop\Versão Final Código\Padaria-pao-doce\site
         $link = $preference->init_point;
         
         }
+
+      
+        
+               
+
         //echo $link;
 ?>
 

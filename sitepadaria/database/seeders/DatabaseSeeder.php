@@ -38,5 +38,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'carlos@adm.com',
             'verificador' => '1'
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Kaio Admin',
+            'password' => Hash::make('123456789'),
+            'email' => 'kaio@adm.com',
+            'verificador' => '1'
+        ]);
     }
 }

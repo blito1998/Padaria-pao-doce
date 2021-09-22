@@ -4,6 +4,8 @@
 
 @section('content')
 
+
+
 <div class="col-md-10 offset-md-1">
   <div class="row">
     <div id="image-container" class="container col-md-6">
@@ -12,10 +14,11 @@
     <div id="info-container" class="col-md-6">
       <h1>{{$product->product}}</h1>
       <p class="product-valor">Valor: {{$product->valor}}</p>
-      <p class="product-qtd">Quantidade: {{$product->qtd}}</p>
+      @csrf
+      @method('POST')
+      <input type="text" class="form-control" id="qtd" name="qtd" placeholder="Quantidade do produto" value="{{$product->qtd}}">
       @if(!$hasUserJoined)
         <form action="/cadastro/carrinho/{{$product->id}}" method="POST">
-          @csrf
           <a href="/cadastro/carrinho/{{$product->id}}" 
           class="btn btn-secondary" 
           id="product-compra"
