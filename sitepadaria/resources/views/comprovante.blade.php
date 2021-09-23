@@ -32,10 +32,6 @@
                             <td>{{$product->valor}}</td>
                             <td>{{$product->codigo}}</td>
                             <td>
-
-
-
-                               
                             </td> 
                         </tr>
                     @endforeach

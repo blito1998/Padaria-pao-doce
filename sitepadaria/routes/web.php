@@ -10,15 +10,16 @@ Route::get('/',[PadariaController::class, 'index'] );
 Route::get('/pagecontato',[PadariaController::class, 'pagecontato'] );
 Route::get('/cadastro/carrinhocompras',[PadariaController::class, 'carrinhocompras'])->middleware('auth');
 Route::get('/cadastro',[PadariaController::class, 'cadastro'] )->middleware('auth');
-Route::get('/cadastro/cadastroprodutos',[PadariaController::class, 'cadastroprodutos'] );
-Route::get('/cadastro/{id}',[PadariaController::class, 'show'] );
-Route::post('/cadastro',[PadariaController::class, 'store']);
+Route::get('/cadastro/cadastroprodutos',[PadariaController::class, 'cadastroprodutos'] )->middleware('auth');
+Route::get('/cadastro/{id}',[PadariaController::class, 'show'] )->middleware('auth');
+Route::post('/cadastro',[PadariaController::class, 'store'])->middleware('auth');
 Route::delete('/cadastro/{id}',[PadariaController::class,'destroy'])->middleware('auth');
 Route::get('/cadastro/edit/{id}',[PadariaController::class,'edit'])->middleware('auth');
 Route::put('/cadastro/update/{id}',[PadariaController::class,'update'])->middleware('auth');
 Route::get('/dashboard',[PadariaController::class, 'dashboard'])->middleware('auth');
 Route::delete('/cadastro/leave/{id}',[PadariaController::class, 'leavecarrinho'])->middleware('auth');
 Route::get('/cadastro/carrinho/{id}',[PadariaController::class, 'carrinho'])->middleware('auth');
+Route::get('/rotaForm/{id}',[PadariaController::class, 'rotaForm'])->middleware('auth');
 
 //Clientes
 
@@ -29,8 +30,6 @@ Route::delete('/cliente/{id}',[PadariaController::class,'destroycliente'])->midd
 
 //API PAGAMENTO
 
-Route::get('/testepagar',[PadariaController::class,'testepagar'])->middleware('auth');
-Route::get('/testepagamento',[PadariaController::class,'testepagamento'])->middleware('auth');
 Route::get('/compraconcluida',[PadariaController::class,'compraconcluida'])->middleware('auth');
 
 //RELATORIO VENDAS
@@ -38,11 +37,6 @@ Route::get('/relatoriovendas',[PadariaController::class,'relatoriovendas'])->mid
 
 //COMPROVANTE
 Route::get('/comprovante',[PadariaController::class,'comprovante'])->middleware('auth');
-
-
-
-
-
 
 
 Auth::routes();

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 DB::table('vendas')->insert([
     'user_id' => $user->id,
-    'total' => 1
+    'total' => $user->total
 ]);
 
 
@@ -18,7 +18,7 @@ DB::table('vendas')->insert([
 
 
 
-
+{{--
 
 <div class="col-md-12 dashboard-product-container">
     <div class="row">
@@ -68,6 +68,9 @@ DB::table('vendas')->insert([
     </div>
 </div>
 
+--}}
+
 <h3>A compra foi concluida com sucesso, <a href="/">clique aqui para voltar para a pagina inicial</a></h3>
+
 
 @endsection

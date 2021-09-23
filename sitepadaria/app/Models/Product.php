@@ -11,6 +11,17 @@ class Product extends Model
 
     protected $guarded =[];
 
+    protected $fillable = [
+        'id',
+        'product',
+        'description',
+        'valor',
+        'codigo',
+        'qnt',
+        'image',
+        'user_id'
+    ];
+
     public function user(){
         return $this->belongsTo('App\Models\User');
     }

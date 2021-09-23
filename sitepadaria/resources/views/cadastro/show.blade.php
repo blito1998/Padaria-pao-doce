@@ -14,12 +14,15 @@
     <div id="info-container" class="col-md-6">
       <h1>{{$product->product}}</h1>
       <p class="product-valor">Valor: {{$product->valor}}</p>
-      @csrf
-      @method('POST')
-      <input type="text" class="form-control" id="qtd" name="qtd" placeholder="Quantidade do produto" value="{{$product->qtd}}">
-      @if(!$hasUserJoined)
+      <p class="product-qtd">Valor: {{$product->qtd}}</p>
+     
+
+        @if(!$hasUserJoined)
+
         <form action="/cadastro/carrinho/{{$product->id}}" method="POST">
-          <a href="/cadastro/carrinho/{{$product->id}}" 
+        @csrf
+        @method('POST')
+        <a href="/cadastro/carrinho/{{$product->id}}" 
           class="btn btn-secondary" 
           id="product-compra"
           onclick="product.preventDefault();
@@ -27,9 +30,13 @@
           Comprar
         </a>
         </form>
-      @else
+
+        
+
+        @else
         <p class="already-joined-msg">Produto adicionado no carrinho!</p>
-      @endif
+        @endif
+
     </div>
     <div class="col-md-12" id="description-container">
       <h3>Sobre o produto:</h3>

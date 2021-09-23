@@ -11,6 +11,8 @@
 
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\Http\Controllers\CsrfCookieController;
+use App\Models\User;
+use App\Models\Product_User;
 
 //Logica de venda
 use function PHPSTORM_META\type;
@@ -38,8 +40,8 @@ require_once 'C:\Users\Edson\Desktop\Versão Final Código\Padaria-pao-doce\site
         $valorfinal = $valorfinal + ($item->quantity*$item->unit_price);
         //Temos que colocar os valores do usuário na tabela de vendas por aqui
       
+        User::find($user->id)->update([ 'total' => $valorfinal]);
         
-        $user->total = $valorfinal;
         
 
         
@@ -72,6 +74,8 @@ require_once 'C:\Users\Edson\Desktop\Versão Final Código\Padaria-pao-doce\site
                
 
         //echo $link;
+
+   
 ?>
 
 <div class="col-md-10 offset-md-1 dashboard-title-container">
@@ -116,7 +120,6 @@ require_once 'C:\Users\Edson\Desktop\Versão Final Código\Padaria-pao-doce\site
     </table>
 
 
-   
     <a href={{$link}} class="btn btn-secondary" >Pagar</a>
 
 @else

@@ -31,8 +31,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <p><a href="/">Voltar para pagina inicial.</a></p>
             @else
-            <p>Não há vendas cadastradas, <a href="/">voltar para pagina inicial</a></p>
+            <p>Não há vendas cadastradas, <a href="/">voltar para pagina inicial.</a></p>
             @endif
         </div>
     </div>

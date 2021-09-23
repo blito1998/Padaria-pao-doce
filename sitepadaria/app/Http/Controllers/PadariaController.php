@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Venda;
+use App\Models\Product_User;
 
 class PadariaController extends Controller
 {
@@ -57,8 +58,7 @@ class PadariaController extends Controller
         
         return view('cadastro.cadastroprodutos');
 
-        $user = auth()->user();
-        
+     
 
     }
     
@@ -93,18 +93,15 @@ class PadariaController extends Controller
         return redirect('cadastro/cadastroprodutos')->with('msg','Produto cadastrado com sucesso!');
     }
 
+   
     /*VISUALIZAR PRODUTO*/
 
-
-    public function show($id){
+    public function show($id) {
 
         $product= Product::FindOrFail($id);
 
         $user= auth()->user();
         $hasUserJoined = false;
-
-        
-
 
         if($user){
 
@@ -264,18 +261,17 @@ class PadariaController extends Controller
     }
 
     /*ADICIONAR NO CARRINHO*/
-
-    public function carrinho($id, Request $request) {
+    public function carrinho($id) {
 
         $user = auth()->user();
 
-        $user->productsAsParticipants()->attach($id);
+        $user->productsAsParticipants()->attach($id); 
 
         $product = Product::findOrfail($id);
 
-        $product->qtd=$request->qtd;
-        $product->save();
+       
 
+  
 
         return redirect('/cadastro/carrinhocompras')->with('msg', 'Seu produto foi adicionado com sucesso!');
 
@@ -308,11 +304,6 @@ class PadariaController extends Controller
 
         $productsAsParticipants= $user->productsAsParticipants;
 
-    //$link = 1;
-
-    
-    //'link'=>$link
-
 
         return view('cadastro.carrinhocompras',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants, 'user'=>$user]);
 
@@ -321,29 +312,6 @@ class PadariaController extends Controller
 //API PAGAMENTO
 
 
-
-    public function testepagar(){
-
-        $user = auth()->user();
-
-        $products = $user->products;
-
-        $productsAsParticipants= $user->productsAsParticipants;
-
-        return view('client.index',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
-    }
-    
-    public function testepagamento(){
-
-        $user = auth()->user();
-
-        $products = $user->products;
-
-        $productsAsParticipants= $user->productsAsParticipants;
-
-        return view('mercadopago',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants]);
-    }
-    
     public function compraconcluida() {
 
         $user = auth()->user();
@@ -352,10 +320,6 @@ class PadariaController extends Controller
 
         $productsAsParticipants= $user->productsAsParticipants;
 
-    //$link = 1;
-
-    
-    //'link'=>$link
 
 
         return view('compraconcluida',['products'=>$products, 'productsAsParticipants'=>$productsAsParticipants, 'user'=>$user]);
